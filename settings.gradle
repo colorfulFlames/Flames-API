@@ -1,0 +1,3 @@
+rootProject.name = 'Flames-API'
+include 'main'
+

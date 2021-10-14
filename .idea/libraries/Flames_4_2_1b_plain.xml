@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Flames-4.2.1b-plain">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Flames/build/libs/Flames-4.2.1b-plain.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
