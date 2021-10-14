@@ -13,7 +13,7 @@ public class FlamesDataConnection {
     static final File userDirectory = new File(flamesDirectory.getAbsolutePath() + "/user");
     static final File guildDirectory = new File(flamesDirectory.getAbsolutePath() + "/guild");
     static void prepare() {
-            if (!flamesDirectory.exists() | !userDirectory.exists() | guildDirectory.exists()) {
+            if (!flamesDirectory.exists() | !userDirectory.exists() | !guildDirectory.exists()) {
                 Logger.getGlobal().log(Level.SEVERE, "Cannot find Flames data. Make sure you run the Flames jar first.");
                 System.exit(1);
             }
