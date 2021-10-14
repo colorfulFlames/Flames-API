@@ -4,7 +4,6 @@
 
 package com.severalcircles.flamesapi;
 
-import com.severalcircles.flames.data.base.FlamesDataManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ public class DataController {
     @GetMapping("/user/{id}")
     public ResponseEntity getUser(@PathVariable String id) {
         try {
-            return new ResponseEntity(FlamesDataManager.readUser(id).createData(), HttpStatus.OK);
+            return new ResponseEntity(FlamesDataConnection.getUser(id)[0], HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>",HttpStatus.NOT_FOUND);
         }

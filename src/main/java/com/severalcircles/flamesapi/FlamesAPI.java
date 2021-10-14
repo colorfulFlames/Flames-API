@@ -4,13 +4,13 @@
 
 package com.severalcircles.flamesapi;
 
-import com.severalcircles.flames.data.user.FlamesUser;
-import net.dv8tion.jda.api.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+//import net.dv8tion.jda.api.entities.User;
 
 /**
  * Main class for the Flames API
@@ -20,9 +20,11 @@ public class FlamesAPI {
     /**
      * Starts the API
      */
-    public static void start() {
+    public static void main(String args[]) {
+        Logger.getGlobal().log(Level.INFO, "Searching for Flames Data");
+        FlamesDataConnection.prepare();
         Logger.getGlobal().log(Level.INFO, "Starting API");
-        SpringApplication.run(FlamesAPI.class);
+        SpringApplication.run(FlamesAPI.class, args);
     }
 
     /**
@@ -34,21 +36,4 @@ public class FlamesAPI {
         return "https://flamesapi.severalcircles.com/user/" + id;
     }
 
-    /**
-     *
-     * @param user Flames User
-     * @return String with link to the user data in the API
-     */
-    public static String getUserDataLink(FlamesUser user) {
-        return "https://flamesapi.severalcircles.com/user/" + user.getDiscordId();
-    }
-
-    /**
-     *
-     * @param user Discord User object
-     * @return String with link to the user data in the API
-     */
-    public static String getUserDataLink(User user) {
-        return "https://flamesapi.severalcircles.com/user/" + user.getId();
-    }
 }
