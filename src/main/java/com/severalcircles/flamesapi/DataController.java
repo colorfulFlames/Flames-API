@@ -15,28 +15,26 @@ import java.io.IOException;
 @SuppressWarnings("ALL")
 @RestController
 public class DataController {
-    @GetMapping("/user/{id}")
-    public ResponseEntity getUser(@PathVariable String id) {
+    @GetMapping("/user/{id}/{thing}")
+    public ResponseEntity getUser(@PathVariable String id, @PathVariable String thing) {
+        int th;
+        switch (thing) {
+            default:
+            case "":
+            case "user":
+                th = 0;
+                break;
+            case "stats":
+                th = 1;
+                break;
+            case "funfacts":
+                th = 2;
+                break;
+        }
         try {
-            return new ResponseEntity(FlamesDataConnection.getUser(id)[0], HttpStatus.OK);
+            return new ResponseEntity(FlamesDataConnection.getUser(id)[th], HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>",HttpStatus.NOT_FOUND);
-        }
-    }
-    @GetMapping("/user/{id}/stats")
-    public ResponseEntity getStats(@PathVariable String id) {
-        try {
-            return new ResponseEntity(FlamesDataConnection.getUser(id)[1], HttpStatus.OK);
-        } catch (IOException e) {
-            return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>",HttpStatus.NOT_FOUND);
-        }
-    }
-    @GetMapping("/user/{id}/funfacts")
-    public ResponseEntity getFunFacts(@PathVariable String id) {
-        try {
-            return new ResponseEntity(FlamesDataConnection.getUser(id)[2], HttpStatus.OK);
-        } catch (IOException e) {
-            return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>", HttpStatus.NOT_FOUND);
         }
     }
 }
