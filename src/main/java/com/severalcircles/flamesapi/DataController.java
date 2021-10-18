@@ -23,4 +23,20 @@ public class DataController {
             return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>",HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/user/{id}/stats")
+    public ResponseEntity getStats(@PathVariable String id) {
+        try {
+            return new ResponseEntity(FlamesDataConnection.getUser(id)[1], HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>",HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/user/{id}/funfacts")
+    public ResponseEntity getFunFacts(@PathVariable String id) {
+        try {
+            return new ResponseEntity(FlamesDataConnection.getUser(id)[2], HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity("<!DOCTYPE html><html><head><script type=\"text/javascript\">window.location=\"https://flamesapi.severalcircles.com/error/404\"</script></head></html>", HttpStatus.NOT_FOUND);
+        }
+    }
 }
