@@ -35,4 +35,12 @@ public class FlamesDataConnection {
         return new Properties[]{p1, p2, p3};
 
     }
+    public static Properties getGuild(String id) throws IOException {
+        File gdata = new File(guildDirectory.getAbsolutePath() + "/" + id + "/guild.fl");
+        FileInputStream is = new FileInputStream(gdata);
+        Properties data = new Properties();
+        data.load(is);
+        return data;
+    }
+
 }

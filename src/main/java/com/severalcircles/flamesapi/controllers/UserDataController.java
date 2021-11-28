@@ -2,8 +2,9 @@
  * Copyright (c) 2021 Several Circles.
  */
 
-package com.severalcircles.flamesapi;
+package com.severalcircles.flamesapi.controllers;
 
+import com.severalcircles.flamesapi.FlamesDataConnection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 @SuppressWarnings("ALL")
 @RestController
-public class DataController {
+public class UserDataController {
     @GetMapping("/user/{id}/{thing}")
     public ResponseEntity getUser(@PathVariable String id, @PathVariable String thing) {
         int th;
